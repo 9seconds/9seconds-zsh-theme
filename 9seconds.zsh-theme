@@ -2,7 +2,7 @@
 
 PROMPT='
 
-$(_user_host)${_current_dir} $(venv_prompt) $(git_prompt_info)
+$(_user_host)${_current_dir} $(venv_prompt)$(git_prompt_info)
 %{$fg_bold[white]%}➜%{$reset_color%} '
 
 PROMPT2='%{$fg[grey]%}◀%{$reset_color%} '
@@ -27,7 +27,7 @@ function _user_host() {
 function venv_prompt() {
     if [[ -n $VIRTUAL_ENV ]]; then
         venv_name=$(basename $VIRTUAL_ENV)
-        echo "%{$fg[yellow]%}($venv_name)%{$reset_color%}"
+        echo "%{$fg[yellow]%}($venv_name)%{$reset_color%} "
     fi
 }
 
