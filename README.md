@@ -9,6 +9,8 @@ It looks like this.
 
 Basically I removed all clutter (I do not want to know a time of the last modification), removed ruby stuff and add support for Python Virtualenv.
 
+Works best with Solarized.
+
 
 Installation
 ------------
