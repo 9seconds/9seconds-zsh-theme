@@ -16,7 +16,7 @@ Installation
 If you want to do it quick, just do it quick
 
 ```bash
-$ curl -L https://raw.github.com/9seconds/9seconds-zsh-theme/master/install.sh | sh
+$ curl -L https://raw.github.com/9seconds/9seconds-zsh-theme/master/install.sh | bash
 ```
 
 and then choose it in your `.zshrc`
