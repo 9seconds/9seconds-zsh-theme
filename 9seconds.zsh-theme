@@ -7,7 +7,7 @@ $(_user_host)${_current_dir} $(venv_prompt)$(git_prompt_info)
 
 PROMPT2='%{$fg[grey]%}◀%{$reset_color%} '
 
-RPROMPT='%{$(echotc UP 1)%}$(git_prompt_status) ${_return_status}%{$(echotc DO 1)%}'
+RPROMPT='%{$(echotc UP 1)%}$(__git_ps1 "%s") ${_return_status}%{$(echotc DO 1)%}'
 
 local _current_dir="%{$fg[blue]%}%3~%{$reset_color%}"
 local _return_status="%{$fg[red]%}%(?..⍉)%{$reset_color%}"
