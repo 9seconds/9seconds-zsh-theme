@@ -2,7 +2,7 @@
 
 PROMPT='
 
-$(_user_host)${_current_dir} $(venv_prompt)$(__git_ps1 "%s")
+$(_user_host)${_current_dir} $(venv_prompt)%{$fg[green]%}$(__git_ps1 "%s")%{$reset_color%}
 %{$fg_bold[white]%}➜%{$reset_color%} '
 
 PROMPT2='%{$fg[grey]%}◀%{$reset_color%} '
