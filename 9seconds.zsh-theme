@@ -2,35 +2,26 @@
 
 PROMPT='
 
-$(_user_host)${_current_dir} $(venv_prompt)%{$fg[green]%}%{$reset_color%}
+${_current_dir} $(git_prompt) $(venv_prompt)
 %{$fg_bold[white]%}➜%{$reset_color%} '
-
-PROMPT2='%{$fg[grey]%}◀%{$reset_color%} '
-
-RPROMPT='%{$(echotc UP 1)%} ${_return_status}%{$(echotc DO 1)%}'
+PROMPT2='%{$fg[white]%}◀%{$reset_color%} '
+RPROMPT='%{$(echotc UP 1)%} ${_current_date} ${_return_status}%{$(echotc DO 1)%}'
 
 local _current_dir="%{$fg[blue]%}%3~%{$reset_color%}"
+local _current_date="%{$fg[white]%}$(date '+%R')%{$reset_color%}"
 local _return_status="%{$fg[red]%}%(?..⍉)%{$reset_color%}"
-local _hist_no="%{$fg[grey]%}%h%{$reset_color%}"
 
-function _user_host() {
-  if [[ -n $SSH_CONNECTION ]]; then
-    me="%n@%m"
-  elif [[ $LOGNAME != $USER ]]; then
-    me="%n"
-  fi
-  if [[ -n $me ]]; then
-    echo "%{$fg[cyan]%}$me%{$reset_color%}:"
-  fi
-}
-
-function venv_prompt() {
+venv_prompt() {
     if [[ -n $VIRTUAL_ENV ]]; then
-        venv_name=$(basename $VIRTUAL_ENV)
-        echo "%{$fg[yellow]%}($venv_name)%{$reset_color%} "
+        local venv_name=$(basename $VIRTUAL_ENV)
+        echo -n "%{$fg[yellow]%}($venv_name)%{$reset_color%} "
     fi
 }
 
+git_prompt() {
+    local branch_name="$(git rev-parse --symbolic-full-name --abbrev-ref HEAD 2>/dev/null || true)"
+    echo -n "%{$fg[green]%}${branch_name}%{$reset_color%}"
+}
 
 if [[ $USER == "root" ]]; then
   CARETCOLOR="red"
